@@ -1,4 +1,4 @@
-package com._lucas.alugaqui;
+package test.java.com._lucas.alugaqui;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
