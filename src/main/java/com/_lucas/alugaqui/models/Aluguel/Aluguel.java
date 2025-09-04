@@ -45,6 +45,9 @@ public class Aluguel {
         this.contratoUrl = contratoUrl;
     }
 
+    public Aluguel() {
+    }
+
     public Long getId() {
         return id;
     }
