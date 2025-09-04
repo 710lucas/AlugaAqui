@@ -1,6 +1,7 @@
 package com._lucas.alugaqui.models.Casa;
 
 import com._lucas.alugaqui.models.Aluguel.Aluguel;
+import com._lucas.alugaqui.models.Interesse.Interesse;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -49,6 +50,9 @@ public class Casa {
     @OneToMany(mappedBy = "casa")
     private List<Aluguel> alugueis;
 
+    @OneToMany(mappedBy = "casa")
+    private List<Interesse> interesses;
+
     public Casa(Usuario locador, String nome, String descricao, String endereco, String tipo, int quartos, boolean mobiliada, Status status, List<String> restricoes) {
         this.locador = locador;
         this.nome = nome;
@@ -60,6 +64,7 @@ public class Casa {
         this.status = status;
         this.restricoes = restricoes;
         this.alugueis = new ArrayList<>();
+        this.interesses = new ArrayList<>();
     }
 
     public Casa() {

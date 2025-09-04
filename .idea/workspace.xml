@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Primeiras entidades">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Aluguel/Aluguel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Aluguel/Aluguel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Interesse/Interesse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Interesse/StatusInteresse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Casa/Casa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Casa/Casa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,21 +28,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "710lucas"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;710lucas&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/710lucas/AlugaAqui",
-    "accountId": "1cf584c7-270f-483e-9dbf-8a0c56856c9e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/710lucas/AlugaAqui&quot;,
+    &quot;accountId&quot;: &quot;1cf584c7-270f-483e-9dbf-8a0c56856c9e&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="32CjD66qGOIoKXqeihAGbDYPKjo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,6 +57,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.AlugaAquiApplication (1).executor": "Run",
     "Spring Boot.AlugaAquiApplication.executor": "Run",
     "git-widget-placeholder": "main",
@@ -109,6 +115,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756931325489</updated>
       <workItem from="1756931326572" duration="4197000" />
+      <workItem from="1756980429822" duration="445000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
