@@ -1,0 +1,64 @@
+package com._lucas.alugaqui.DTOs;
+
+import com._lucas.alugaqui.models.Usuario.Role;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public class UsuarioCreateDTO {
+
+    @NotBlank
+    private String nome;
+
+    @NotBlank
+    private String email;
+
+    @NotBlank
+    @Max(13)
+    private String telefone;
+
+    @NotNull
+    private Role role;
+
+    public UsuarioCreateDTO(String nome, String email, String telefone, Role role) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.role = role;
+    }
+
+    public UsuarioCreateDTO() {
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+}
