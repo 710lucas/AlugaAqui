@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="adicionando .gitignore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioUpdateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/UsuarioService.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Service de Usuário">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/CasaCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/CasaUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/CasaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +130,10 @@
       <workItem from="1756980429822" duration="445000" />
       <workItem from="1756985542824" duration="882000" />
       <workItem from="1757039330014" duration="723000" />
-      <workItem from="1757076334159" duration="934000" />
+      <workItem from="1757076334159" duration="1089000" />
+      <workItem from="1757079036080" duration="188000" />
+      <workItem from="1757094296321" duration="1908000" />
+      <workItem from="1757178079094" duration="603000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -196,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757076435262</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Service de Usuário">
+      <option name="closed" value="true" />
+      <created>1757077316671</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1757077316671</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +218,8 @@
     <MESSAGE value="Primeiras entidades" />
     <MESSAGE value="Repositories" />
     <MESSAGE value="adicionando .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="adicionando .gitignore" />
+    <MESSAGE value="Service de Usuário" />
+    <option name="LAST_COMMIT_MESSAGE" value="Service de Usuário" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
