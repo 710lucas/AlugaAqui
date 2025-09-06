@@ -7,9 +7,11 @@ import com._lucas.alugaqui.models.Casa.Status;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.CasaRepository;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service
 public class CasaService {
 
     private final CasaRepository casaRepository;
