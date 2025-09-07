@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Service de casa">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/AluguelCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/AluguelUpdateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/AluguelService.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Service de Aluguel">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/InteresseCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/InteresseUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/InteresseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/CasaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/CasaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/Interesse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/InteresseRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +134,7 @@
       <workItem from="1757076334159" duration="1089000" />
       <workItem from="1757079036080" duration="188000" />
       <workItem from="1757094296321" duration="1908000" />
-      <workItem from="1757178079094" duration="1670000" />
+      <workItem from="1757178079094" duration="3302000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -216,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757179185419</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Service de Aluguel">
+      <option name="closed" value="true" />
+      <created>1757180248827</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1757180248827</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +237,8 @@
     <MESSAGE value="adicionando .gitignore" />
     <MESSAGE value="Service de Usuário" />
     <MESSAGE value="Service de casa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Service de casa" />
+    <MESSAGE value="Service de Aluguel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Service de Aluguel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
