@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Controller de usuario">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/CasaController.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Controller de Casa">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/InteresseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +133,7 @@
       <workItem from="1757094296321" duration="1908000" />
       <workItem from="1757178079094" duration="4521000" />
       <workItem from="1757337847427" duration="1643000" />
-      <workItem from="1757519261357" duration="357000" />
+      <workItem from="1757519261357" duration="972000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -239,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757338761180</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Controller de Casa">
+      <option name="closed" value="true" />
+      <created>1757519624007</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1757519624007</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +263,8 @@
     <MESSAGE value="Service de Aluguel" />
     <MESSAGE value="Service de Interesse" />
     <MESSAGE value="Controller de usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Controller de usuario" />
+    <MESSAGE value="Controller de Casa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Controller de Casa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
