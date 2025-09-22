@@ -1,69 +1,57 @@
-package com._lucas.alugaqui.models.Usuario;
+package com._lucas.alugaqui.DTOs;
 
 import com._lucas.alugaqui.models.Aluguel.Aluguel;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Interesse.Interesse;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com._lucas.alugaqui.models.Usuario.Role;
+import com._lucas.alugaqui.models.Usuario.Usuario;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "usuarios")
-public class Usuario {
+public class UsuarioResponseDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @NotBlank
     private String nome;
-
-    @Email
     private String email;
-
-    @NotBlank
-    private String senha;
-
-    @NotBlank
-    @Max(13) //55 00 9 12345678
     private String telefone;
-
-    @NotNull
     private Role role;
-
-    @OneToMany(mappedBy = "locador")
     private List<Casa> casas;
-
-    @OneToMany(mappedBy = "locador")
     private List<Aluguel> locadorAlugueis;
-
-    @OneToOne(mappedBy = "locatario")
     private Aluguel locatarioAluguel;
-
-    @OneToMany(mappedBy = "locatario")
     private List<Interesse> interesses;
 
-    public Usuario(String nome, String email, String telefone, Role role, String senha) {
+    public static UsuarioResponseDTO fromModel (Usuario usuario) {
+        return new UsuarioResponseDTO(
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getTelefone(),
+                usuario.getRole(),
+                usuario.getCasas(),
+                usuario.getLocadorAlugueis(),
+                usuario.getLocatarioAluguel(),
+                usuario.getInteresses()
+        );
+    }
+
+    public UsuarioResponseDTO(Long id, String nome, String email, String telefone, Role role, List<Casa> casas, List<Aluguel> locadorAlugueis, Aluguel locatarioAluguel, List<Interesse> interesses) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.role = role;
-        this.casas = new ArrayList<>();
-        this.locadorAlugueis = new ArrayList<>();
-        this.interesses = new ArrayList<>();
-        this.senha = senha;
-    }
-
-    public Usuario() {
+        this.casas = casas;
+        this.locadorAlugueis = locadorAlugueis;
+        this.locatarioAluguel = locatarioAluguel;
+        this.interesses = interesses;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -98,10 +86,6 @@ public class Usuario {
         this.role = role;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<Casa> getCasas() {
         return casas;
     }
@@ -124,14 +108,6 @@ public class Usuario {
 
     public void setLocatarioAluguel(Aluguel locatarioAluguel) {
         this.locatarioAluguel = locatarioAluguel;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public List<Interesse> getInteresses() {

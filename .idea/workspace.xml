@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Controller de Casa">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AluguelController.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Controller de Aluguel">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/exceptions/EmailNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/CustomUserDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioUpdateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/AluguelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/AluguelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/InteresseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/InteresseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/UsuarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +32,7 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
@@ -58,7 +73,7 @@
     &quot;Spring Boot.AlugaAquiApplication (1).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.AlugaAquiApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/lucas/Documents/UFPB/DSC/AlugaAqui&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/lucas/Documents/UFPB/DSC/lab-08-dsc&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -134,7 +149,9 @@
       <workItem from="1757178079094" duration="4521000" />
       <workItem from="1757337847427" duration="1643000" />
       <workItem from="1757519261357" duration="972000" />
-      <workItem from="1757521065703" duration="282000" />
+      <workItem from="1757521065703" duration="1965000" />
+      <workItem from="1757979664083" duration="41000" />
+      <workItem from="1758557139389" duration="7379000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -248,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757519624007</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Controller de Aluguel">
+      <option name="closed" value="true" />
+      <created>1757521354846</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1757521354846</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +290,8 @@
     <MESSAGE value="Service de Interesse" />
     <MESSAGE value="Controller de usuario" />
     <MESSAGE value="Controller de Casa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Controller de Casa" />
+    <MESSAGE value="Controller de Aluguel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Controller de Aluguel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

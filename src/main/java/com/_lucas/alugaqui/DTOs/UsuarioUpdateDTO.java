@@ -11,10 +11,21 @@ public class UsuarioUpdateDTO {
     @Max(13)
     private String telefone;
 
-    public UsuarioUpdateDTO(String nome, String email, String telefone) {
+    private String senha;
+
+    public UsuarioUpdateDTO(String nome, String email, String telefone, String senha) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
+        this.senha = senha;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public UsuarioUpdateDTO() {

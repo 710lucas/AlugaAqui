@@ -6,6 +6,7 @@ import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Interesse.Interesse;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.InteresseRepository;
+import com._lucas.alugaqui.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,23 +17,23 @@ public class InteresseService {
 
     private final InteresseRepository interesseRepository;
     private final CasaService casaService;
-    private final UsuarioService usuarioService;
+    private final UsuarioRepository usuarioRepository;
 
     public InteresseService(
             InteresseRepository interesseRepository,
             CasaService casaService,
-            UsuarioService usuarioService
+            UsuarioRepository usuarioRepository
     ){
         this.interesseRepository = interesseRepository;
         this.casaService = casaService;
-        this.usuarioService = usuarioService;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public Interesse create (InteresseCreateDTO createDTO){
         try{
 
             Casa casa = this.casaService.get(createDTO.getCasaId());
-            Usuario locatario = this.usuarioService.get(createDTO.getLocatarioId());
+            Usuario locatario = this.usuarioRepository.findById(createDTO.getLocatarioId()).orElse(null);
 
             if (casa == null || locatario == null)
                 throw new Exception("Um dos dados obrigatórios não foi preenchido, tente novamente");

@@ -1,6 +1,7 @@
 package com._lucas.alugaqui.controllers;
 
 import com._lucas.alugaqui.DTOs.UsuarioCreateDTO;
+import com._lucas.alugaqui.DTOs.UsuarioResponseDTO;
 import com._lucas.alugaqui.DTOs.UsuarioUpdateDTO;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.services.UsuarioService;
@@ -20,22 +21,22 @@ public class UsuarioController {
     }
 
     @PostMapping("/")
-    public Usuario create (@Valid @RequestBody UsuarioCreateDTO createDTO) {
+    public UsuarioResponseDTO create (@Valid @RequestBody UsuarioCreateDTO createDTO) {
         return this.usuarioService.create(createDTO);
     }
 
     @GetMapping("/{id}")
-    public Usuario get (@PathVariable Long id) {
+    public UsuarioResponseDTO get (@PathVariable Long id) {
         return this.usuarioService.get(id);
     }
 
     @GetMapping()
-    public Collection<Usuario> getAll (){
+    public Collection<UsuarioResponseDTO> getAll (){
         return this.usuarioService.getAll();
     }
 
     @PatchMapping("/{id}")
-    public Usuario update (@PathVariable Long id, @Valid @RequestBody UsuarioUpdateDTO updateDTO) {
+    public UsuarioResponseDTO update (@PathVariable Long id, @Valid @RequestBody UsuarioUpdateDTO updateDTO) {
         return this.usuarioService.update(id, updateDTO);
     }
 

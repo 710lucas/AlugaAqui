@@ -6,6 +6,7 @@ import com._lucas.alugaqui.models.Aluguel.Aluguel;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.AluguelRepository;
+import com._lucas.alugaqui.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,23 +17,23 @@ public class AluguelService {
 
     private final AluguelRepository aluguelRepository;
     private final CasaService casaService;
-    private final UsuarioService usuarioService;
+    private final UsuarioRepository usuarioRepository;
 
     public AluguelService(
             AluguelRepository aluguelRepository,
             CasaService casaService,
-            UsuarioService usuarioService
+            UsuarioRepository usuarioRepository
     ){
         this.aluguelRepository = aluguelRepository;
         this.casaService = casaService;
-        this.usuarioService = usuarioService;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public Aluguel create(AluguelCreateDTO createDTO){
         try{
 
-            Usuario locador = this.usuarioService.get(createDTO.getLocadorId());
-            Usuario locatario = this.usuarioService.get(createDTO.getLocatarioId());
+            Usuario locador = this.usuarioRepository.findById(createDTO.getLocadorId()).orElse(null);
+            Usuario locatario = this.usuarioRepository.findById(createDTO.getLocatarioId()).orElse(null);
             Casa casa = this.casaService.get(createDTO.getCasaId());
 
             if (locatario == null || locador == null || casa == null)

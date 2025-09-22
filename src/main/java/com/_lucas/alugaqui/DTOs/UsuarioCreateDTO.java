@@ -20,11 +20,15 @@ public class UsuarioCreateDTO {
     @NotNull
     private Role role;
 
-    public UsuarioCreateDTO(String nome, String email, String telefone, Role role) {
+    @NotBlank
+    private String senha;
+
+    public UsuarioCreateDTO(String nome, String email, String telefone, Role role, String senha) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.role = role;
+        this.senha = senha;
     }
 
     public UsuarioCreateDTO() {
@@ -60,5 +64,13 @@ public class UsuarioCreateDTO {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

@@ -1,49 +1,70 @@
 package com._lucas.alugaqui.services;
 
 import com._lucas.alugaqui.DTOs.UsuarioCreateDTO;
+import com._lucas.alugaqui.DTOs.UsuarioResponseDTO;
 import com._lucas.alugaqui.DTOs.UsuarioUpdateDTO;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    private final UsuarioRepository usuarioRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public UsuarioService(UsuarioRepository usuarioRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.usuarioRepository = usuarioRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public Usuario create(UsuarioCreateDTO createDTO){
+    public UsuarioResponseDTO create(UsuarioCreateDTO createDTO){
         try{
+
+            String senha = bCryptPasswordEncoder.encode(createDTO.getSenha());
+
             Usuario novoUsuario = new Usuario(
                     createDTO.getNome(),
                     createDTO.getEmail(),
                     createDTO.getTelefone(),
-                    createDTO.getRole()
+                    createDTO.getRole(),
+                    senha
             );
 
-            return this.usuarioRepository.save(novoUsuario);
+            novoUsuario = this.usuarioRepository.save(novoUsuario);
+            return UsuarioResponseDTO.fromModel(novoUsuario);
         } catch (Exception error){
             return null;
         }
     }
 
-    public Usuario get(Long id){
-        return this.usuarioRepository.findById(id).orElse(null);
+    public UsuarioResponseDTO get(Long id){
+        Usuario usuario = this.usuarioRepository.findById(id).orElse(null);
+        return (usuario != null) ? UsuarioResponseDTO.fromModel(usuario) : null;
     }
 
-    public Collection<Usuario> getAll(){
-        return this.usuarioRepository.findAll();
+    public Collection<UsuarioResponseDTO> getAll(){
+        Collection<Usuario> usuarios = this.usuarioRepository.findAll();
+
+        Collection<UsuarioResponseDTO> usuariosResponse = new ArrayList<>();
+
+        usuarios.forEach(usuario -> {
+            usuariosResponse.add(UsuarioResponseDTO.fromModel(usuario));
+        });
+
+        return usuariosResponse;
     }
 
-    public Usuario update(Long id, UsuarioUpdateDTO updateDTO){
+    public UsuarioResponseDTO update(Long id, UsuarioUpdateDTO updateDTO){
         try{
 
-            Usuario usuario = this.get(id);
+            Usuario usuario = this.usuarioRepository.findById(id).orElse(null);
 
             if (usuario == null)
                 throw new Exception("Usuário não encontrado no sistema.");
@@ -57,7 +78,12 @@ public class UsuarioService {
             if (updateDTO.getTelefone() != null)
                 usuario.setTelefone(updateDTO.getTelefone());
 
-            return this.usuarioRepository.save(usuario);
+            if (updateDTO.getSenha() != null){
+                String senha = bCryptPasswordEncoder.encode(updateDTO.getSenha());
+                usuario.setSenha(senha);
+            }
+
+            return UsuarioResponseDTO.fromModel(this.usuarioRepository.save(usuario));
 
         } catch (Exception e){
             return null;
