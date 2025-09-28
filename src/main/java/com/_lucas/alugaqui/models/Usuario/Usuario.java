@@ -4,10 +4,7 @@ import com._lucas.alugaqui.models.Aluguel.Aluguel;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Interesse.Interesse;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +27,11 @@ public class Usuario {
     private String senha;
 
     @NotBlank
-    @Max(13) //55 00 9 12345678
+    @Size(max = 13) //55 00 9 12345678
     private String telefone;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @OneToMany(mappedBy = "locador")

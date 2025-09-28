@@ -4,23 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Controller de Aluguel">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/exceptions/EmailNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/CustomUserDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Security?">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/LoginRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/TokenResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/util/DataInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioUpdateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/AlugaAquiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/AlugaAquiApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/AluguelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/AluguelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/InteresseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/InteresseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/AlugaAquiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/AlugaAquiApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/models/Casa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/models/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/models/Usuario.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +51,9 @@
     &quot;accountId&quot;: &quot;1cf584c7-270f-483e-9dbf-8a0c56856c9e&quot;
   }
 }</component>
+  <component name="HttpClientEndpointsTabState">
+    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;51abacaa23baac8d3f6126853d06c67b4f08e860&quot; value=&quot;###&amp;#10;POST http://localhost:8080/api/login&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;{ &amp;quot;email&amp;quot; : &amp;quot;admin@admin.com&amp;quot;, &amp;quot;password&amp;quot; : &amp;quot;admin&amp;#10;  &amp;quot;  &amp;#10;}&quot; /&gt;&#10;  &lt;entry key=&quot;368a5216fbc0449a50d9c66a15fb0b33dad9eb5d&quot; value=&quot;###&amp;#10;DELETE http://localhost:8080/api/login&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -151,7 +153,8 @@
       <workItem from="1757519261357" duration="972000" />
       <workItem from="1757521065703" duration="1965000" />
       <workItem from="1757979664083" duration="41000" />
-      <workItem from="1758557139389" duration="7379000" />
+      <workItem from="1758557139389" duration="9922000" />
+      <workItem from="1758886112292" duration="730000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -273,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757521354846</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Security?">
+      <option name="closed" value="true" />
+      <created>1758565742262</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1758565742262</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +302,8 @@
     <MESSAGE value="Controller de usuario" />
     <MESSAGE value="Controller de Casa" />
     <MESSAGE value="Controller de Aluguel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Controller de Aluguel" />
+    <MESSAGE value="Security?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Security?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
