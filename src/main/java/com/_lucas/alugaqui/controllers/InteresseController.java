@@ -3,10 +3,13 @@ package com._lucas.alugaqui.controllers;
 import com._lucas.alugaqui.DTOs.InteresseCreateDTO;
 import com._lucas.alugaqui.DTOs.InteresseResponseDTO;
 import com._lucas.alugaqui.DTOs.InteresseUpdateDTO;
-import com._lucas.alugaqui.models.Interesse.Interesse;
+import com._lucas.alugaqui.models.Interesse.StatusInteresse;
 import com._lucas.alugaqui.services.InteresseService;
 import jakarta.validation.Valid;
-import org.springframework.security.core.Authentication; // Adicionado import
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -33,9 +36,13 @@ public class InteresseController {
     }
 
     @GetMapping("/")
-    public Collection<InteresseResponseDTO> getAll (Authentication authentication) { // Modificado
+    public Page<InteresseResponseDTO> getAll (
+            @RequestParam(required = false) StatusInteresse status,
+            @PageableDefault(sort = "createdAt", size = 10) Pageable pageable,
+            Authentication authentication
+    ) {
         String userEmail = authentication.getName();
-        return this.interesseService.getAll(userEmail);
+        return this.interesseService.getAll(userEmail, status, pageable);
     }
 
     @PatchMapping("/{id}")

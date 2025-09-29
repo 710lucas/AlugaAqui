@@ -2,7 +2,7 @@ package com._lucas.alugaqui.services;
 
 import com._lucas.alugaqui.DTOs.InteresseCreateDTO;
 import com._lucas.alugaqui.DTOs.InteresseUpdateDTO;
-import com._lucas.alugaqui.DTOs.InteresseResponseDTO; // Adicionado
+import com._lucas.alugaqui.DTOs.InteresseResponseDTO;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Interesse.Interesse;
 import com._lucas.alugaqui.models.Interesse.StatusInteresse;
@@ -10,15 +10,17 @@ import com._lucas.alugaqui.models.Usuario.Role;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.InteresseRepository;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.modelmapper.ModelMapper; // Adicionado
+import org.modelmapper.ModelMapper;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.stream.Collectors; // Adicionado
+import java.util.stream.Collectors;
 
 @Service
 public class InteresseService {
@@ -26,7 +28,7 @@ public class InteresseService {
     private final InteresseRepository interesseRepository;
     private final CasaService casaService;
     private final UsuarioRepository usuarioRepository;
-    private final ModelMapper modelMapper; // Adicionado
+    private final ModelMapper modelMapper;
 
     public InteresseService(
             InteresseRepository interesseRepository,
@@ -40,15 +42,13 @@ public class InteresseService {
         this.modelMapper = modelMapper;
     }
 
-    // Método auxiliar
     public Interesse getInteresseEntity (Long id){
         return this.interesseRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Interesse não encontrado.")
         );
     }
 
-    public InteresseResponseDTO create (InteresseCreateDTO createDTO, String locatarioEmail){ // Tipo de retorno alterado
-        // ... (Lógica de criação inalterada)
+    public InteresseResponseDTO create (InteresseCreateDTO createDTO, String locatarioEmail){
         Usuario locatario = this.usuarioRepository.findUsuarioByEmail(locatarioEmail);
 
         if (locatario == null || locatario.getRole() != Role.LOCATARIO) {
@@ -69,7 +69,6 @@ public class InteresseService {
             );
 
             interesse = interesseRepository.save(interesse);
-            // Uso de ModelMapper
             return modelMapper.map(interesse, InteresseResponseDTO.class);
 
         } catch (ResponseStatusException e) {
@@ -79,36 +78,31 @@ public class InteresseService {
         }
     }
 
-    public InteresseResponseDTO get (Long id){ // Tipo de retorno alterado
+    public InteresseResponseDTO get (Long id){
         Interesse interesse = getInteresseEntity(id);
-        // Uso de ModelMapper
         return modelMapper.map(interesse, InteresseResponseDTO.class);
     }
 
-    public Collection<InteresseResponseDTO> getAll(String userEmail) { // Tipo de retorno alterado
+    public Page<InteresseResponseDTO> getAll(String userEmail, StatusInteresse status, Pageable pageable) {
         try {
-            // ... (Lógica de busca inalterada)
             Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);
 
             if (user == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado.");
             }
 
-            Collection<Interesse> interesses;
+            Page<Interesse> interesses;
             if (user.getRole() == Role.LOCATARIO) {
-                interesses = this.interesseRepository.findAllByLocatario(user);
+                interesses = this.interesseRepository.findAllByLocatarioAndOptionalFilters(user, status, pageable);
             }
             else if (user.getRole() == Role.LOCADOR) {
-                interesses = this.interesseRepository.findAllByCasa_Locador(user);
+                interesses = this.interesseRepository.findAllByCasaLocadorAndOptionalFilters(user, status, pageable);
             }
             else {
-                interesses = Collections.emptyList();
+                interesses = Page.empty(pageable);
             }
 
-            // Uso de ModelMapper para mapear a coleção
-            return interesses.stream()
-                    .map(interesse -> modelMapper.map(interesse, InteresseResponseDTO.class))
-                    .collect(Collectors.toList());
+            return interesses.map(interesse -> modelMapper.map(interesse, InteresseResponseDTO.class));
 
         } catch (ResponseStatusException e) {
             throw e;
@@ -117,9 +111,8 @@ public class InteresseService {
         }
     }
 
-    public InteresseResponseDTO update (Long id, InteresseUpdateDTO updateDTO, String userEmail) { // Tipo de retorno alterado
+    public InteresseResponseDTO update (Long id, InteresseUpdateDTO updateDTO, String userEmail) {
         try{
-            // ... (Lógica de atualização inalterada)
             Interesse interesse = this.getInteresseEntity(id);
             Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);
 
@@ -133,7 +126,6 @@ public class InteresseService {
             if(updateDTO.getStatus() != null)
                 interesse.setStatus(updateDTO.getStatus());
 
-            // Uso de ModelMapper
             return modelMapper.map(this.interesseRepository.save(interesse), InteresseResponseDTO.class);
         } catch (ResponseStatusException e) {
             throw e;
@@ -142,7 +134,6 @@ public class InteresseService {
         }
     }
 
-    // ... (Lógica de delete inalterada)
     public void delete (Long id, String userEmail) {
         Interesse interesse = this.getInteresseEntity(id);
         Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);

@@ -3,13 +3,14 @@ package com._lucas.alugaqui.controllers;
 import com._lucas.alugaqui.DTOs.CasaCreateDTO;
 import com._lucas.alugaqui.DTOs.CasaResponseDTO;
 import com._lucas.alugaqui.DTOs.CasaUpdateDTO;
-import com._lucas.alugaqui.models.Casa.Casa;
+import com._lucas.alugaqui.models.Casa.Status;
 import com._lucas.alugaqui.services.CasaService;
 import jakarta.validation.Valid;
-import org.springframework.security.core.Authentication; // Adicionado import
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
 
 @RestController
 @RequestMapping("/casas")
@@ -32,10 +33,16 @@ public class CasaController {
         return this.casaService.get(id);
     }
 
-    @GetMapping("/")
-    public Collection<CasaResponseDTO> getAll (Authentication authentication) { // Modificado
+    @GetMapping()
+    public Page<CasaResponseDTO> getAll (
+            @RequestParam(required = false) String tipo,
+            @RequestParam(required = false) Integer minQuartos,
+            @RequestParam(required = false) Status status,
+            @PageableDefault(sort = "nome", size = 10) Pageable pageable,
+            Authentication authentication
+    ) {
         String userEmail = authentication.getName();
-        return this.casaService.getAll(userEmail);
+        return this.casaService.getAll(userEmail, tipo, minQuartos, status, pageable);
     }
 
     @PatchMapping("/{id}")

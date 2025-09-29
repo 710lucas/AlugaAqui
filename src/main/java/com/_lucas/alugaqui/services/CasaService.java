@@ -2,27 +2,29 @@ package com._lucas.alugaqui.services;
 
 import com._lucas.alugaqui.DTOs.CasaCreateDTO;
 import com._lucas.alugaqui.DTOs.CasaUpdateDTO;
-import com._lucas.alugaqui.DTOs.CasaResponseDTO; // Adicionado
+import com._lucas.alugaqui.DTOs.CasaResponseDTO;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Casa.Status;
 import com._lucas.alugaqui.models.Usuario.Role;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.CasaRepository;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.modelmapper.ModelMapper; // Adicionado
+import org.modelmapper.ModelMapper;
 
 import java.util.Collection;
-import java.util.stream.Collectors; // Adicionado
+import java.util.stream.Collectors;
 
 @Service
 public class CasaService {
 
     private final CasaRepository casaRepository;
     private final UsuarioRepository usuarioRepository;
-    private final ModelMapper modelMapper; // Adicionado
+    private final ModelMapper modelMapper;
 
     public CasaService (CasaRepository casaRepository, UsuarioRepository usuarioRepository, ModelMapper modelMapper){
         this.casaRepository = casaRepository;
@@ -30,15 +32,13 @@ public class CasaService {
         this.modelMapper = modelMapper;
     }
 
-    // Método auxiliar para uso interno, retorna a entidade Casa.
     public Casa getCasaEntity(Long id){
         return this.casaRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Casa não encontrada.")
         );
     }
 
-    public CasaResponseDTO create(CasaCreateDTO createDTO, String locadorEmail){ // Tipo de retorno alterado
-        // ... (Lógica de permissão inalterada)
+    public CasaResponseDTO create(CasaCreateDTO createDTO, String locadorEmail){
         Usuario locador = this.usuarioRepository.findUsuarioByEmail(locadorEmail);
 
         if (locador == null || locador.getRole() != Role.LOCADOR) {
@@ -59,7 +59,6 @@ public class CasaService {
             );
 
             novaCasa = this.casaRepository.save(novaCasa);
-            // Uso de ModelMapper
             return modelMapper.map(novaCasa, CasaResponseDTO.class);
         } catch(ResponseStatusException e){
             throw e;
@@ -68,33 +67,28 @@ public class CasaService {
         }
     }
 
-    public CasaResponseDTO get(Long id){ // Tipo de retorno alterado
+    public CasaResponseDTO get(Long id){
         Casa casa = getCasaEntity(id);
-        // Uso de ModelMapper
         return modelMapper.map(casa, CasaResponseDTO.class);
     }
 
-    public Collection<CasaResponseDTO> getAll(String userEmail){ // Tipo de retorno alterado
+    public Page<CasaResponseDTO> getAll(String userEmail, String tipo, Integer minQuartos, Status status, Pageable pageable){
         try{
-            // ... (Lógica de busca inalterada)
             Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);
 
             if (user == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado.");
             }
 
-            Collection<Casa> casas;
+            Page<Casa> casas;
             if (user.getRole() == Role.LOCADOR) {
-                casas = this.casaRepository.findAllByLocador(user);
+                casas = this.casaRepository.findAllByLocadorAndOptionalFilters(user, tipo, minQuartos, status, pageable);
             }
             else {
-                casas = this.casaRepository.findAll();
+                casas = this.casaRepository.findAllByOptionalFilters(tipo, minQuartos, status, pageable);
             }
 
-            // Uso de ModelMapper para mapear a coleção
-            return casas.stream()
-                    .map(casa -> modelMapper.map(casa, CasaResponseDTO.class))
-                    .collect(Collectors.toList());
+            return casas.map(casa -> modelMapper.map(casa, CasaResponseDTO.class));
 
         } catch (ResponseStatusException e) {
             throw e;
@@ -103,10 +97,9 @@ public class CasaService {
         }
     }
 
-    public CasaResponseDTO update(Long id, CasaUpdateDTO updateDTO, String locadorEmail){ // Tipo de retorno alterado
+    public CasaResponseDTO update(Long id, CasaUpdateDTO updateDTO, String locadorEmail){
         try{
             Casa casa = this.getCasaEntity(id);
-            // ... (Lógica de permissão e atualização de campos inalterada)
             Usuario locador = this.usuarioRepository.findUsuarioByEmail(locadorEmail);
 
             if (locador == null || !casa.getLocador().getEmail().equals(locadorEmail)) {
@@ -115,7 +108,6 @@ public class CasaService {
 
             if(updateDTO.isMobiliada() != null)
                 casa.setMobiliada(updateDTO.isMobiliada());
-            // ... (outras atualizações)
             if(updateDTO.getDescricao() != null)
                 casa.setDescricao(updateDTO.getDescricao());
 
@@ -134,7 +126,6 @@ public class CasaService {
             if(updateDTO.getTipo() != null)
                 casa.setTipo(updateDTO.getTipo());
 
-            // Uso de ModelMapper
             return modelMapper.map(this.casaRepository.save(casa), CasaResponseDTO.class);
 
         } catch (ResponseStatusException e) {
@@ -145,7 +136,6 @@ public class CasaService {
     }
 
     public void delete(Long id, String locadorEmail){
-        // ... (Lógica de delete inalterada)
         Casa casa = this.getCasaEntity(id);
         Usuario locador = this.usuarioRepository.findUsuarioByEmail(locadorEmail);
 
@@ -155,5 +145,4 @@ public class CasaService {
 
         this.casaRepository.deleteById(id);
     }
-
 }

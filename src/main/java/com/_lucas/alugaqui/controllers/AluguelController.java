@@ -3,10 +3,13 @@ package com._lucas.alugaqui.controllers;
 import com._lucas.alugaqui.DTOs.AluguelCreateDTO;
 import com._lucas.alugaqui.DTOs.AluguelResponseDTO;
 import com._lucas.alugaqui.DTOs.AluguelUpdateDTO;
-import com._lucas.alugaqui.models.Aluguel.Aluguel;
+import com._lucas.alugaqui.models.Aluguel.StatusAluguel;
 import com._lucas.alugaqui.services.AluguelService;
 import jakarta.validation.Valid;
-import org.springframework.security.core.Authentication; // Adicionado import
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -33,9 +36,13 @@ public class AluguelController {
     }
 
     @GetMapping
-    public Collection<AluguelResponseDTO> getAll (Authentication authentication) { // Modificado
+    public Page<AluguelResponseDTO> getAll (
+            @RequestParam(required = false) StatusAluguel status,
+            @PageableDefault(sort = "dataInicio", size = 10) Pageable pageable,
+            Authentication authentication
+    ) {
         String userEmail = authentication.getName();
-        return this.aluguelService.getAll(userEmail);
+        return this.aluguelService.getAll(userEmail, status, pageable);
     }
 
     @PatchMapping("/{id}")
@@ -49,5 +56,4 @@ public class AluguelController {
         String userEmail = authentication.getName();
         this.aluguelService.delete(id, userEmail);
     }
-
 }
