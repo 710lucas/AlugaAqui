@@ -1,6 +1,7 @@
 package com._lucas.alugaqui.controllers;
 
 import com._lucas.alugaqui.DTOs.CasaCreateDTO;
+import com._lucas.alugaqui.DTOs.CasaResponseDTO;
 import com._lucas.alugaqui.DTOs.CasaUpdateDTO;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.services.CasaService;
@@ -21,24 +22,24 @@ public class CasaController {
     }
 
     @PostMapping()
-    public Casa create (@RequestBody @Valid CasaCreateDTO createDTO, Authentication authentication){
+    public CasaResponseDTO create (@RequestBody @Valid CasaCreateDTO createDTO, Authentication authentication){
         String locadorEmail = authentication.getName();
         return this.casaService.create(createDTO, locadorEmail);
     }
 
     @GetMapping("/{id}")
-    public Casa get (@PathVariable Long id) {
+    public CasaResponseDTO get (@PathVariable Long id) {
         return this.casaService.get(id);
     }
 
     @GetMapping("/")
-    public Collection<Casa> getAll (Authentication authentication) { // Modificado
+    public Collection<CasaResponseDTO> getAll (Authentication authentication) { // Modificado
         String userEmail = authentication.getName();
         return this.casaService.getAll(userEmail);
     }
 
     @PatchMapping("/{id}")
-    public Casa update (@PathVariable Long id, @Valid @RequestBody CasaUpdateDTO updateDTO, Authentication authentication) {
+    public CasaResponseDTO update (@PathVariable Long id, @Valid @RequestBody CasaUpdateDTO updateDTO, Authentication authentication) {
         String locadorEmail = authentication.getName();
         return this.casaService.update(id, updateDTO, locadorEmail);
     }

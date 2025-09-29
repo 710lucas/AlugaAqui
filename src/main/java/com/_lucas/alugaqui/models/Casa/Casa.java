@@ -48,9 +48,11 @@ public class Casa {
     private List<String> restricoes;
 
     @OneToMany(mappedBy = "casa")
+    @NotNull
     private List<Aluguel> alugueis;
 
     @OneToMany(mappedBy = "casa")
+    @NotNull
     private List<Interesse> interesses;
 
     public Casa(Usuario locador, String nome, String descricao, String endereco, String tipo, int quartos, boolean mobiliada, Status status, List<String> restricoes) {
@@ -68,6 +70,8 @@ public class Casa {
     }
 
     public Casa() {
+        this.alugueis = new ArrayList<>();
+        this.interesses = new ArrayList<>();
     }
 
     public Long getId() {
@@ -152,5 +156,13 @@ public class Casa {
 
     public void setAlugueis(List<Aluguel> alugueis) {
         this.alugueis = alugueis;
+    }
+
+    public List<Interesse> getInteresses() {
+        return interesses;
+    }
+
+    public void setInteresses(List<Interesse> interesses) {
+        this.interesses = interesses;
     }
 }

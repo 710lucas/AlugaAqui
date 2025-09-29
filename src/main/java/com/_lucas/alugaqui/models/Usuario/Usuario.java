@@ -35,9 +35,11 @@ public class Usuario {
     private Role role;
 
     @OneToMany(mappedBy = "locador")
-    private List<Casa> casas;
+    @NotNull
+    private List<Casa> casas = new ArrayList<>();
 
     @OneToMany(mappedBy = "locador")
+    @NotNull
     private List<Aluguel> locadorAlugueis;
 
     @OneToOne(mappedBy = "locatario")
@@ -58,6 +60,9 @@ public class Usuario {
     }
 
     public Usuario() {
+        this.casas = new ArrayList<>();
+        this.locadorAlugueis = new ArrayList<>();
+        this.interesses = new ArrayList<>();
     }
 
     public Long getId() {

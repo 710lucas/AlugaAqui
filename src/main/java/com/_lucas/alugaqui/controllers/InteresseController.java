@@ -1,6 +1,7 @@
 package com._lucas.alugaqui.controllers;
 
 import com._lucas.alugaqui.DTOs.InteresseCreateDTO;
+import com._lucas.alugaqui.DTOs.InteresseResponseDTO;
 import com._lucas.alugaqui.DTOs.InteresseUpdateDTO;
 import com._lucas.alugaqui.models.Interesse.Interesse;
 import com._lucas.alugaqui.services.InteresseService;
@@ -21,24 +22,24 @@ public class InteresseController {
     }
 
     @PostMapping("/")
-    public Interesse create (@Valid @RequestBody InteresseCreateDTO createDTO, Authentication authentication){
+    public InteresseResponseDTO create (@Valid @RequestBody InteresseCreateDTO createDTO, Authentication authentication){
         String locatarioEmail = authentication.getName();
         return this.interesseService.create(createDTO, locatarioEmail);
     }
 
     @GetMapping("/{id}")
-    public Interesse get (@PathVariable Long id) {
+    public InteresseResponseDTO get (@PathVariable Long id) {
         return this.interesseService.get(id);
     }
 
     @GetMapping("/")
-    public Collection<Interesse> getAll (Authentication authentication) { // Modificado
+    public Collection<InteresseResponseDTO> getAll (Authentication authentication) { // Modificado
         String userEmail = authentication.getName();
         return this.interesseService.getAll(userEmail);
     }
 
     @PatchMapping("/{id}")
-    public Interesse update (@PathVariable Long id, @Valid @RequestBody InteresseUpdateDTO updateDTO, Authentication authentication) {
+    public InteresseResponseDTO update (@PathVariable Long id, @Valid @RequestBody InteresseUpdateDTO updateDTO, Authentication authentication) {
         String userEmail = authentication.getName();
         return this.interesseService.update(id, updateDTO, userEmail);
     }

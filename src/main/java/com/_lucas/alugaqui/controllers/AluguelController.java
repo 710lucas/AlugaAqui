@@ -1,6 +1,7 @@
 package com._lucas.alugaqui.controllers;
 
 import com._lucas.alugaqui.DTOs.AluguelCreateDTO;
+import com._lucas.alugaqui.DTOs.AluguelResponseDTO;
 import com._lucas.alugaqui.DTOs.AluguelUpdateDTO;
 import com._lucas.alugaqui.models.Aluguel.Aluguel;
 import com._lucas.alugaqui.services.AluguelService;
@@ -21,24 +22,24 @@ public class AluguelController {
     }
 
     @PostMapping
-    public Aluguel create (@Valid @RequestBody AluguelCreateDTO createDTO, Authentication authentication) {
+    public AluguelResponseDTO create (@Valid @RequestBody AluguelCreateDTO createDTO, Authentication authentication) {
         String userEmail = authentication.getName();
         return this.aluguelService.create(createDTO, userEmail);
     }
 
     @GetMapping("/{id}")
-    public Aluguel get (@PathVariable Long id) {
+    public AluguelResponseDTO get (@PathVariable Long id) {
         return this.aluguelService.get(id);
     }
 
     @GetMapping
-    public Collection<Aluguel> getAll (Authentication authentication) { // Modificado
+    public Collection<AluguelResponseDTO> getAll (Authentication authentication) { // Modificado
         String userEmail = authentication.getName();
         return this.aluguelService.getAll(userEmail);
     }
 
     @PatchMapping("/{id}")
-    public Aluguel update (@PathVariable Long id, @Valid @RequestBody AluguelUpdateDTO updateDTO, Authentication authentication) {
+    public AluguelResponseDTO update (@PathVariable Long id, @Valid @RequestBody AluguelUpdateDTO updateDTO, Authentication authentication) {
         String userEmail = authentication.getName();
         return this.aluguelService.update(id, updateDTO, userEmail);
     }
