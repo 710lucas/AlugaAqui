@@ -14,7 +14,6 @@ public class UsuarioCreateDTO {
     private String email;
 
     @NotBlank
-    @Max(13)
     private String telefone;
 
     @NotNull
