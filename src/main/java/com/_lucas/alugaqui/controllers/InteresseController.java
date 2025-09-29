@@ -5,6 +5,7 @@ import com._lucas.alugaqui.DTOs.InteresseUpdateDTO;
 import com._lucas.alugaqui.models.Interesse.Interesse;
 import com._lucas.alugaqui.services.InteresseService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication; // Adicionado import
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -20,8 +21,9 @@ public class InteresseController {
     }
 
     @PostMapping("/")
-    public Interesse create (@Valid @RequestBody InteresseCreateDTO createDTO){
-        return this.interesseService.create(createDTO);
+    public Interesse create (@Valid @RequestBody InteresseCreateDTO createDTO, Authentication authentication){
+        String locatarioEmail = authentication.getName();
+        return this.interesseService.create(createDTO, locatarioEmail);
     }
 
     @GetMapping("/{id}")
@@ -30,19 +32,20 @@ public class InteresseController {
     }
 
     @GetMapping("/")
-    public Collection<Interesse> getAll () {
-        return this.interesseService.getAll();
+    public Collection<Interesse> getAll (Authentication authentication) { // Modificado
+        String userEmail = authentication.getName();
+        return this.interesseService.getAll(userEmail);
     }
 
     @PatchMapping("/{id}")
-    public Interesse update (@PathVariable Long id, @Valid @RequestBody InteresseUpdateDTO updateDTO) {
-        return this.interesseService.update(id, updateDTO);
+    public Interesse update (@PathVariable Long id, @Valid @RequestBody InteresseUpdateDTO updateDTO, Authentication authentication) {
+        String userEmail = authentication.getName();
+        return this.interesseService.update(id, updateDTO, userEmail);
     }
 
     @DeleteMapping("/{id}")
-    public void delete (@PathVariable Long id) {
-        this.interesseService.delete(id);
+    public void delete (@PathVariable Long id, Authentication authentication) {
+        String userEmail = authentication.getName();
+        this.interesseService.delete(id, userEmail);
     }
-
-
 }

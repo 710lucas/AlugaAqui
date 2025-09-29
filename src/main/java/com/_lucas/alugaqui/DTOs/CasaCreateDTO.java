@@ -10,9 +10,6 @@ import java.util.List;
 
 public class CasaCreateDTO {
 
-    @NotNull
-    private Long locadorId;
-
     @NotBlank
     private String nome;
 
@@ -33,8 +30,7 @@ public class CasaCreateDTO {
     @NotNull
     private List<String> restricoes;
 
-    public CasaCreateDTO(Long locadorId, String nome, String descricao, String endereco, String tipo, int quartos, boolean mobiliada, List<String> restricoes) {
-        this.locadorId = locadorId;
+    public CasaCreateDTO(String nome, String descricao, String endereco, String tipo, int quartos, boolean mobiliada, List<String> restricoes) {
         this.nome = nome;
         this.descricao = descricao;
         this.endereco = endereco;
@@ -47,13 +43,7 @@ public class CasaCreateDTO {
     public CasaCreateDTO() {
     }
 
-    public Long getLocadorId() {
-        return locadorId;
-    }
-
-    public void setLocadorId(Long locadorId) {
-        this.locadorId = locadorId;
-    }
+    // Getters e Setters, sem os de locadorId
 
     public String getNome() {
         return nome;

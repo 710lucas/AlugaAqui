@@ -5,6 +5,7 @@ import com._lucas.alugaqui.DTOs.AluguelUpdateDTO;
 import com._lucas.alugaqui.models.Aluguel.Aluguel;
 import com._lucas.alugaqui.services.AluguelService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication; // Adicionado import
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -20,8 +21,9 @@ public class AluguelController {
     }
 
     @PostMapping
-    public Aluguel create (@Valid @RequestBody AluguelCreateDTO createDTO) {
-        return this.aluguelService.create(createDTO);
+    public Aluguel create (@Valid @RequestBody AluguelCreateDTO createDTO, Authentication authentication) {
+        String userEmail = authentication.getName();
+        return this.aluguelService.create(createDTO, userEmail);
     }
 
     @GetMapping("/{id}")
@@ -30,18 +32,21 @@ public class AluguelController {
     }
 
     @GetMapping
-    public Collection<Aluguel> getAll () {
-        return this.aluguelService.getAll();
+    public Collection<Aluguel> getAll (Authentication authentication) { // Modificado
+        String userEmail = authentication.getName();
+        return this.aluguelService.getAll(userEmail);
     }
 
     @PatchMapping("/{id}")
-    public Aluguel update (@PathVariable Long id, @Valid @RequestBody AluguelUpdateDTO updateDTO) {
-        return this.aluguelService.update(id, updateDTO);
+    public Aluguel update (@PathVariable Long id, @Valid @RequestBody AluguelUpdateDTO updateDTO, Authentication authentication) {
+        String userEmail = authentication.getName();
+        return this.aluguelService.update(id, updateDTO, userEmail);
     }
 
     @DeleteMapping("/{id}")
-    public void delete (@PathVariable Long id) {
-        this.aluguelService.delete(id);
+    public void delete (@PathVariable Long id, Authentication authentication) {
+        String userEmail = authentication.getName();
+        this.aluguelService.delete(id, userEmail);
     }
 
 }

@@ -5,6 +5,7 @@ import com._lucas.alugaqui.DTOs.CasaUpdateDTO;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.services.CasaService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication; // Adicionado import
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -20,8 +21,9 @@ public class CasaController {
     }
 
     @PostMapping()
-    public Casa create (@RequestBody @Valid CasaCreateDTO createDTO){
-        return this.casaService.create(createDTO);
+    public Casa create (@RequestBody @Valid CasaCreateDTO createDTO, Authentication authentication){
+        String locadorEmail = authentication.getName();
+        return this.casaService.create(createDTO, locadorEmail);
     }
 
     @GetMapping("/{id}")
@@ -30,20 +32,20 @@ public class CasaController {
     }
 
     @GetMapping("/")
-    public Collection<Casa> getAll () {
-        return this.casaService.getAll();
+    public Collection<Casa> getAll (Authentication authentication) { // Modificado
+        String userEmail = authentication.getName();
+        return this.casaService.getAll(userEmail);
     }
 
     @PatchMapping("/{id}")
-    public Casa update (@PathVariable Long id, @Valid @RequestBody CasaUpdateDTO updateDTO) {
-        return this.casaService.update(id, updateDTO);
+    public Casa update (@PathVariable Long id, @Valid @RequestBody CasaUpdateDTO updateDTO, Authentication authentication) {
+        String locadorEmail = authentication.getName();
+        return this.casaService.update(id, updateDTO, locadorEmail);
     }
 
     @DeleteMapping("/{id}")
-    public void delete (@PathVariable Long id) {
-        this.casaService.delete(id);
+    public void delete (@PathVariable Long id, Authentication authentication) {
+        String locadorEmail = authentication.getName();
+        this.casaService.delete(id, locadorEmail);
     }
-
-
-
 }

@@ -8,15 +8,13 @@ public class InteresseCreateDTO {
     @NotNull
     private Long casaId;
 
-    @NotNull
-    private Long locatarioId;
+    // Removido o locatarioId, ele virá do JWT
 
     @NotNull
     private StatusInteresse status;
 
-    public InteresseCreateDTO(Long casaId, Long locatarioId, StatusInteresse status) {
+    public InteresseCreateDTO(Long casaId, StatusInteresse status) {
         this.casaId = casaId;
-        this.locatarioId = locatarioId;
         this.status = status;
     }
 
@@ -29,14 +27,6 @@ public class InteresseCreateDTO {
 
     public void setCasaId(Long casaId) {
         this.casaId = casaId;
-    }
-
-    public Long getLocatarioId() {
-        return locatarioId;
-    }
-
-    public void setLocatarioId(Long locatarioId) {
-        this.locatarioId = locatarioId;
     }
 
     public StatusInteresse getStatus() {

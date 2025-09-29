@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Swagger">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/OpenApiConfig.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Ajustes Swagger">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/CasaCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/CasaCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/InteresseCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/InteresseCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AluguelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AluguelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/CasaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/CasaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/InteresseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/InteresseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/AluguelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/AluguelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/CasaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/CasaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/InteresseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/repositories/InteresseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/AluguelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/AluguelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/CasaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/CasaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/InteresseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/InteresseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
@@ -144,7 +154,7 @@
       <workItem from="1757979664083" duration="41000" />
       <workItem from="1758557139389" duration="9922000" />
       <workItem from="1758886112292" duration="730000" />
-      <workItem from="1759165600771" duration="2654000" />
+      <workItem from="1759165600771" duration="4241000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -282,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759167811571</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Ajustes Swagger">
+      <option name="closed" value="true" />
+      <created>1759168407300</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1759168407300</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +320,8 @@
     <MESSAGE value="Controller de Aluguel" />
     <MESSAGE value="Security?" />
     <MESSAGE value="Swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Swagger" />
+    <MESSAGE value="Ajustes Swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes Swagger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
