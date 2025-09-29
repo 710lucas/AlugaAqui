@@ -34,22 +34,21 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(
-                                "/**",
-                                        "/api/login",
-                                        "/api/change-password",
-                                        "/swagger-ui.html",
-                                        "/swagger-ui/**",
-                                        "/swagger-ui/index.html",
-                                        "/v3/api-docs/**",
-                                        "/v3/api-docs.yaml"
+                            "/api/login",
+                            "/api/change-password",
+                            "/swagger-ui.html",
+                            "/swagger-ui/**",
+                            "/swagger-ui/index.html",
+                            "/v3/api-docs/**",
+                            "/v3/api-docs.yaml"
                         )
                         .permitAll()
-//                        .anyRequest().authenticated()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
-//        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
