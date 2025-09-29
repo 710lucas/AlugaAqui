@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Security?">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/LoginRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/TokenResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/util/DataInitializer.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Swagger">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/AlugaAquiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/AlugaAquiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/CustomUserDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/AlugaAquiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/AlugaAquiApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/models/Casa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/models/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/models/Usuario.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +146,7 @@
       <workItem from="1757979664083" duration="41000" />
       <workItem from="1758557139389" duration="9922000" />
       <workItem from="1758886112292" duration="730000" />
+      <workItem from="1759165600771" duration="1956000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -303,7 +295,8 @@
     <MESSAGE value="Controller de Casa" />
     <MESSAGE value="Controller de Aluguel" />
     <MESSAGE value="Security?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Security?" />
+    <MESSAGE value="Swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Swagger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

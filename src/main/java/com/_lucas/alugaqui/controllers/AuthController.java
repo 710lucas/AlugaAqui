@@ -1,5 +1,6 @@
 package com._lucas.alugaqui.controllers;
 
+import com._lucas.alugaqui.DTOs.ChangePasswordDTO;
 import com._lucas.alugaqui.DTOs.LoginRequestDTO;
 import com._lucas.alugaqui.DTOs.TokenResponseDTO;
 import com._lucas.alugaqui.security.JwtUtil;
@@ -47,7 +48,7 @@ public class AuthController {
 
     @PostMapping("/change-password")
     public String changePassword(@RequestBody ChangePasswordDTO changePasswordDTO){
-
+        return "ok";
     }
 
 

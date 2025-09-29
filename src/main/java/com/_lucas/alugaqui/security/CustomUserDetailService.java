@@ -5,12 +5,13 @@ import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
-public class CustomUserDetailService {
+public class CustomUserDetailService implements UserDetailsService {
 
     private final UsuarioRepository usuarioRepository;
 
@@ -18,7 +19,8 @@ public class CustomUserDetailService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public UserDetails loadByEmail(String email) throws EmailNotFoundException {
+    @Override
+    public UserDetails loadUserByUsername(String email) throws EmailNotFoundException {
 
         Usuario usuario = usuarioRepository.findUsuarioByEmail(email);
 
