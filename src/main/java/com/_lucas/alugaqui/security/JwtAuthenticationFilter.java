@@ -51,18 +51,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER_PREFIX)) {
             jwt = authorizationHeader.substring(BEARER_PREFIX.length());
 
-            // CORREÇÃO ESSENCIAL: Tratar exceções de JWT para que o filtro continue
             try {
                 email = jwtUtil.extractEmail(jwt);
             } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException | IllegalArgumentException e) {
-                // Logar o erro (opcional)
                 System.err.println("Erro ao processar JWT: " + e.getMessage());
-                // Se houver erro, email permanece null e o contexto não será preenchido.
-                // O Spring Security interceptor fará o bloqueio com 401/403.
             }
         }
 
-        // Se o email for válido E o contexto de autenticação estiver vazio (corrigido na iteração anterior)
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null){
 
             try {
@@ -76,7 +71,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                 }
             } catch (Exception e) {
-                // Trata falhas na validação final (e.g., usuário deletado do banco)
                 System.err.println("Falha na autenticação do usuário ou validação do token: " + e.getMessage());
             }
 

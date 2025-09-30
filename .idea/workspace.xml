@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Adicionando exceções e GlobalExceptionHandler">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
-    </list>
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Melhorando autorização" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +140,7 @@
       <workItem from="1758557139389" duration="9922000" />
       <workItem from="1758886112292" duration="730000" />
       <workItem from="1759165600771" duration="7428000" />
-      <workItem from="1759189798256" duration="1220000" />
+      <workItem from="1759189798256" duration="1591000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -328,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759190851655</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Melhorando autorização">
+      <option name="closed" value="true" />
+      <created>1759191239923</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1759191239923</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +360,8 @@
     <MESSAGE value="Removendo dependencia circular" />
     <MESSAGE value="Paginação e filtros de status em Aluguel e Interesse" />
     <MESSAGE value="Adicionando exceções e GlobalExceptionHandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando exceções e GlobalExceptionHandler" />
+    <MESSAGE value="Melhorando autorização" />
+    <option name="LAST_COMMIT_MESSAGE" value="Melhorando autorização" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
