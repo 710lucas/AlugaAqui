@@ -14,6 +14,8 @@ import com._lucas.alugaqui.repositories.InteresseRepository;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
@@ -42,21 +44,30 @@ public class InteresseService {
         this.modelMapper = modelMapper;
     }
 
+    public boolean isLocatarioOfInteresse(Long interesseId) {
+        String authenticatedEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        Interesse interesse = getInteresseEntity(interesseId);
+        return interesse.getLocatario().getEmail().equals(authenticatedEmail);
+    }
+
+    public boolean isLocadorOfInteresseCasa(Long interesseId) {
+        String authenticatedEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        Interesse interesse = getInteresseEntity(interesseId);
+        return interesse.getCasa().getLocador().getEmail().equals(authenticatedEmail);
+    }
+
     public Interesse getInteresseEntity (Long id){
         return this.interesseRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Interesse", id.toString())
         );
     }
 
+    @PreAuthorize("hasRole('LOCATARIO')")
     public InteresseResponseDTO create (InteresseCreateDTO createDTO, String locatarioEmail){
         Usuario locatario = this.usuarioRepository.findUsuarioByEmail(locatarioEmail);
 
         if (locatario == null) {
             throw new ResourceNotFoundException("Usuário", locatarioEmail);
-        }
-
-        if (locatario.getRole() != Role.LOCATARIO) {
-            throw new ForbiddenOperationException("Somente um LOCATARIO pode registrar interesse em uma casa.");
         }
 
         Casa casa = this.casaService.getCasaEntity(createDTO.getCasaId());
@@ -72,6 +83,7 @@ public class InteresseService {
         return modelMapper.map(interesse, InteresseResponseDTO.class);
     }
 
+    @PreAuthorize("@interesseService.isLocatarioOfInteresse(#id) or @interesseService.isLocadorOfInteresseCasa(#id)")
     public InteresseResponseDTO get (Long id){
         Interesse interesse = getInteresseEntity(id);
         return modelMapper.map(interesse, InteresseResponseDTO.class);
@@ -98,16 +110,9 @@ public class InteresseService {
         return interesses.map(interesse -> modelMapper.map(interesse, InteresseResponseDTO.class));
     }
 
+    @PreAuthorize("hasRole('LOCADOR') and @interesseService.isLocadorOfInteresseCasa(#id)")
     public InteresseResponseDTO update (Long id, InteresseUpdateDTO updateDTO, String userEmail) {
         Interesse interesse = this.getInteresseEntity(id);
-        Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);
-
-        if(user == null)
-            throw new ResourceNotFoundException("Usuário", userEmail);
-
-        if (!interesse.getCasa().getLocador().getEmail().equals(userEmail) || user.getRole() != Role.LOCADOR) {
-            throw new ForbiddenOperationException("Somente o locador da casa pode atualizar o status do interesse.");
-        }
 
         if(updateDTO.getStatus() != null)
             interesse.setStatus(updateDTO.getStatus());
@@ -115,20 +120,8 @@ public class InteresseService {
         return modelMapper.map(this.interesseRepository.save(interesse), InteresseResponseDTO.class);
     }
 
+    @PreAuthorize("@interesseService.isLocatarioOfInteresse(#id) or @interesseService.isLocadorOfInteresseCasa(#id)")
     public void delete (Long id, String userEmail) {
-        Interesse interesse = this.getInteresseEntity(id);
-        Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);
-
-        if (user == null)
-            throw new ResourceNotFoundException("Usuário", userEmail);
-
-        boolean isLocatario = interesse.getLocatario().getEmail().equals(userEmail);
-        boolean isLocador = interesse.getCasa().getLocador().getEmail().equals(userEmail);
-
-        if (!isLocatario && !isLocador) {
-            throw new ForbiddenOperationException("Você não tem permissão para excluir este interesse.");
-        }
-
         this.interesseRepository.deleteById(id);
     }
 }

@@ -13,6 +13,8 @@ import com._lucas.alugaqui.repositories.CasaRepository;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
@@ -35,15 +37,23 @@ public class CasaService {
         );
     }
 
+    private Usuario getAuthenticatedUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return this.usuarioRepository.findUsuarioByEmail(email);
+    }
+
+    public boolean isLocadorOfCasa(Long casaId) {
+        String authenticatedEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        Casa casa = getCasaEntity(casaId);
+        return casa.getLocador().getEmail().equals(authenticatedEmail);
+    }
+
+    @PreAuthorize("hasRole('LOCADOR')")
     public CasaResponseDTO create(CasaCreateDTO createDTO, String locadorEmail){
         Usuario locador = this.usuarioRepository.findUsuarioByEmail(locadorEmail);
 
         if (locador == null) {
             throw new ResourceNotFoundException("Usuário", locadorEmail);
-        }
-
-        if (locador.getRole() != Role.LOCADOR) {
-            throw new ForbiddenOperationException("Somente um LOCADOR pode cadastrar uma casa.");
         }
 
         Casa novaCasa = new Casa(
@@ -68,7 +78,7 @@ public class CasaService {
     }
 
     public Page<CasaResponseDTO> getAll(String userEmail, String tipo, Integer minQuartos, Status status, Pageable pageable){
-        Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);
+        Usuario user = getAuthenticatedUser();
 
         if (user == null) {
             throw new ResourceNotFoundException("Usuário", userEmail);
@@ -85,17 +95,9 @@ public class CasaService {
         return casas.map(casa -> modelMapper.map(casa, CasaResponseDTO.class));
     }
 
+    @PreAuthorize("@casaService.isLocadorOfCasa(#id)")
     public CasaResponseDTO update(Long id, CasaUpdateDTO updateDTO, String locadorEmail){
         Casa casa = this.getCasaEntity(id);
-        Usuario locador = this.usuarioRepository.findUsuarioByEmail(locadorEmail);
-
-        if (locador == null) {
-            throw new ResourceNotFoundException("Usuário", locadorEmail);
-        }
-
-        if (!casa.getLocador().getEmail().equals(locadorEmail)) {
-            throw new ForbiddenOperationException("Você não tem permissão para editar esta casa.");
-        }
 
         if(updateDTO.isMobiliada() != null)
             casa.setMobiliada(updateDTO.isMobiliada());
@@ -120,18 +122,8 @@ public class CasaService {
         return modelMapper.map(this.casaRepository.save(casa), CasaResponseDTO.class);
     }
 
+    @PreAuthorize("@casaService.isLocadorOfCasa(#id)")
     public void delete(Long id, String locadorEmail){
-        Casa casa = this.getCasaEntity(id);
-        Usuario locador = this.usuarioRepository.findUsuarioByEmail(locadorEmail);
-
-        if (locador == null) {
-            throw new ResourceNotFoundException("Usuário", locadorEmail);
-        }
-
-        if (!casa.getLocador().getEmail().equals(locadorEmail)) {
-            throw new ForbiddenOperationException("Você não tem permissão para excluir esta casa.");
-        }
-
         this.casaRepository.deleteById(id);
     }
 }
