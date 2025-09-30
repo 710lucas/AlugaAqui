@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Melhorando autorização">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/exceptions/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/exceptions/handler/GlobalExceptionHandler.java" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Ajustando swagger">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/CustomUserDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/CasaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/services/CasaService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,7 @@
     &quot;Spring Boot.AlugaAquiApplication (1).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.AlugaAquiApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/lucas/Documents/UFPB/DSC/lab-08-dsc&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/lucas/.tmp/projetofinal-agendacultural-dsc&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -145,6 +146,8 @@
       <workItem from="1758886112292" duration="730000" />
       <workItem from="1759165600771" duration="7428000" />
       <workItem from="1759189798256" duration="1591000" />
+      <workItem from="1759233402854" duration="2338000" />
+      <workItem from="1759242629966" duration="1676000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -338,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759191239923</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Ajustando swagger">
+      <option name="closed" value="true" />
+      <created>1759196460265</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1759196460265</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +376,8 @@
     <MESSAGE value="Paginação e filtros de status em Aluguel e Interesse" />
     <MESSAGE value="Adicionando exceções e GlobalExceptionHandler" />
     <MESSAGE value="Melhorando autorização" />
-    <option name="LAST_COMMIT_MESSAGE" value="Melhorando autorização" />
+    <MESSAGE value="Ajustando swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustando swagger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
