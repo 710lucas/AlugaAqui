@@ -6,6 +6,8 @@ import com._lucas.alugaqui.exceptions.ResourceNotFoundException;
 import com._lucas.alugaqui.exceptions.EmailNotFoundException;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authorization.AuthorizationDeniedException;
@@ -17,12 +19,15 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.naming.AuthenticationException;
 import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
 @Hidden
 public class GlobalExceptionHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiErrorDTO> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
@@ -113,6 +118,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiErrorDTO> handleGlobalException(Exception ex, HttpServletRequest request) {
+
+        log.error(String.valueOf(ex.getCause()));
+        System.err.println(Arrays.toString(ex.getStackTrace()));
+        System.err.println(ex.getMessage());
 
         ApiErrorDTO error = new ApiErrorDTO(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),

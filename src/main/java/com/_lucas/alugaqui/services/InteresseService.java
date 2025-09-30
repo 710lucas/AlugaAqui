@@ -20,9 +20,6 @@ import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 @Service
 public class InteresseService {
@@ -71,6 +68,10 @@ public class InteresseService {
         }
 
         Casa casa = this.casaService.getCasaEntity(createDTO.getCasaId());
+
+        if (interesseRepository.existsByLocatarioAndCasaIdAndStatus(locatario, casa.getId(), StatusInteresse.ATIVO)) {
+            throw new ForbiddenOperationException("Você já possui um interesse ATIVO para esta casa.");
+        }
 
         Interesse interesse = new Interesse(
                 casa,

@@ -22,4 +22,6 @@ public interface InteresseRepository extends JpaRepository<Interesse, Long> {
 
     Collection<Interesse> findAllByLocatario(Usuario locatario);
     Collection<Interesse> findAllByCasa_Locador(Usuario locador);
+
+    boolean existsByLocatarioAndCasaIdAndStatus(Usuario locatario, Long casaId, StatusInteresse status);
 }

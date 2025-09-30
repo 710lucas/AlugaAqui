@@ -10,9 +10,6 @@ public class AluguelCreateDTO {
     private Long casaId;
 
     @NotNull
-    private Long locadorId;
-
-    @NotNull
     private Long locatarioId;
 
     private double valor;
@@ -23,10 +20,10 @@ public class AluguelCreateDTO {
     @NotBlank
     private String contratoUrl;
 
-    public AluguelCreateDTO(Long casaId, Long locadorId, Long locatario, double valor, StatusAluguel status, String contratoUrl) {
+    public AluguelCreateDTO(Long casaId, Long locatarioId, double valor, StatusAluguel status, String contratoUrl) {
         this.casaId = casaId;
-        this.locadorId = locadorId;
-        this.locatarioId = locatario;
+        // locadorId removido, obtido do JWT
+        this.locatarioId = locatarioId;
         this.valor = valor;
         this.status = status;
         this.contratoUrl = contratoUrl;
@@ -43,13 +40,7 @@ public class AluguelCreateDTO {
         this.casaId = casaId;
     }
 
-    public Long getLocadorId() {
-        return locadorId;
-    }
-
-    public void setLocadorId(Long locadorId) {
-        this.locadorId = locadorId;
-    }
+    // Removido o LocadorId, o Locador é o usuário autenticado
 
     public Long getLocatarioId() {
         return locatarioId;

@@ -8,6 +8,7 @@ import com._lucas.alugaqui.exceptions.ResourceNotFoundException;
 import com._lucas.alugaqui.models.Aluguel.Aluguel;
 import com._lucas.alugaqui.models.Aluguel.StatusAluguel;
 import com._lucas.alugaqui.models.Casa.Casa;
+import com._lucas.alugaqui.models.Casa.Status;
 import com._lucas.alugaqui.models.Usuario.Role;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.AluguelRepository;
@@ -64,21 +65,19 @@ public class AluguelService {
 
     @PreAuthorize("hasRole('LOCADOR') and @casaService.isLocadorOfCasa(#createDTO.casaId)")
     public AluguelResponseDTO create(AluguelCreateDTO createDTO, String userEmail){
-        Usuario user = this.usuarioRepository.findUsuarioByEmail(userEmail);
+        Usuario locador = this.usuarioRepository.findUsuarioByEmail(userEmail); // Locador é o usuário autenticado
 
-        if (user == null) {
+        if (locador == null) {
             throw new ResourceNotFoundException("Usuário", userEmail);
         }
 
-        Optional<Usuario> locadorOpt = this.usuarioRepository.findById(createDTO.getLocadorId());
         Optional<Usuario> locatarioOpt = this.usuarioRepository.findById(createDTO.getLocatarioId());
         Casa casa = this.casaService.getCasaEntity(createDTO.getCasaId());
 
-        Usuario locador = locadorOpt.orElseThrow(() -> new ResourceNotFoundException("Locador", createDTO.getLocadorId().toString()));
         Usuario locatario = locatarioOpt.orElseThrow(() -> new ResourceNotFoundException("Locatário", createDTO.getLocatarioId().toString()));
 
-        if (!locador.getEmail().equals(userEmail)) {
-            throw new ForbiddenOperationException("O locador autenticado não é o locador especificado no contrato.");
+        if (casa.getStatus() != Status.DISPONIVEL) {
+            throw new ForbiddenOperationException("Não é possível alugar uma casa com status: " + casa.getStatus());
         }
 
         Aluguel novoAluguel = new Aluguel(
@@ -93,6 +92,13 @@ public class AluguelService {
         );
 
         novoAluguel = this.aluguelRepository.save(novoAluguel);
+
+        locador.getLocadorAlugueis().add(novoAluguel);
+        this.usuarioRepository.save(locador);
+
+        locatario.getLocatarioAlugueis().add(novoAluguel);
+        this.usuarioRepository.save(locatario);
+
         return modelMapper.map(novoAluguel, AluguelResponseDTO.class);
     }
 
@@ -114,7 +120,8 @@ public class AluguelService {
         return alugueis.map(aluguel -> modelMapper.map(aluguel, AluguelResponseDTO.class));
     }
 
-    @PreAuthorize("@aluguelService.isParticipant(#id)")
+    // PATCH: Somente Locador pode editar o SEU aluguel
+    @PreAuthorize("hasRole('LOCADOR') and @aluguelService.isLocador(#id)")
     public AluguelResponseDTO update(Long id, AluguelUpdateDTO updateDTO, String userEmail){
         Aluguel aluguel = this.getAluguelEntity(id);
 

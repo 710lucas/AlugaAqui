@@ -42,8 +42,8 @@ public class Usuario {
     @NotNull
     private List<Aluguel> locadorAlugueis;
 
-    @OneToOne(mappedBy = "locatario")
-    private Aluguel locatarioAluguel;
+    @OneToMany(mappedBy = "locatario")
+    private List<Aluguel> locatarioAlugueis;
 
     @OneToMany(mappedBy = "locatario")
     private List<Interesse> interesses;
@@ -55,6 +55,7 @@ public class Usuario {
         this.role = role;
         this.casas = new ArrayList<>();
         this.locadorAlugueis = new ArrayList<>();
+        this.locatarioAlugueis = new ArrayList<>();
         this.interesses = new ArrayList<>();
         this.senha = senha;
     }
@@ -62,6 +63,7 @@ public class Usuario {
     public Usuario() {
         this.casas = new ArrayList<>();
         this.locadorAlugueis = new ArrayList<>();
+        this.locatarioAlugueis = new ArrayList<>();
         this.interesses = new ArrayList<>();
     }
 
@@ -121,12 +123,12 @@ public class Usuario {
         this.locadorAlugueis = locadorAlugueis;
     }
 
-    public Aluguel getLocatarioAluguel() {
-        return locatarioAluguel;
+    public List<Aluguel> getLocatarioAlugueis() {
+        return locatarioAlugueis;
     }
 
-    public void setLocatarioAluguel(Aluguel locatarioAluguel) {
-        this.locatarioAluguel = locatarioAluguel;
+    public void setLocatarioAlugueis(List<Aluguel> locatarioAlugueis) {
+        this.locatarioAlugueis = locatarioAlugueis;
     }
 
     public String getSenha() {

@@ -38,7 +38,7 @@ public class CasaController {
             @RequestParam(required = false) String tipo,
             @RequestParam(required = false) Integer minQuartos,
             @RequestParam(required = false) Status status,
-            @PageableDefault(sort = "nome", size = 10) Pageable pageable,
+            @PageableDefault(sort = "nome", size = 10, page = 1) Pageable pageable,
             Authentication authentication
     ) {
         String userEmail = authentication.getName();
