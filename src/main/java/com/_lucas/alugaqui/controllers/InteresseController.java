@@ -18,8 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @RestController
 @RequestMapping("/interesses")
 @Tag(name = "Interesses", description = "Endpoints para gerenciamento de Interesses em Casas")
@@ -58,7 +56,13 @@ public class InteresseController {
     public Page<InteresseResponseDTO> getAll (
             @Parameter(description = "Filtro pelo status do interesse (ATIVO, INATIVO).")
             @RequestParam(required = false) StatusInteresse status,
-            @PageableDefault(sort = "createdAt", size = 10) Pageable pageable,
+            @Parameter(description = "Número da página (inicia em 0). Default: 0.", example = "0")
+            @RequestParam(defaultValue = "0") int page,
+            @Parameter(description = "Tamanho da página. Default: 100.", example = "100")
+            @RequestParam(defaultValue = "100") int size,
+            @Parameter(description = "Propriedade para ordenação, seguido de ',' e direção (ASC ou DESC). Default: createdAt,ASC.", example = "createdAt,ASC")
+            @RequestParam(defaultValue = "createdAt") String sort,
+            @PageableDefault(sort = "createdAt", size = 100) @Parameter(hidden = true) Pageable pageable,
             Authentication authentication
     ) {
         String userEmail = authentication.getName();
@@ -66,9 +70,9 @@ public class InteresseController {
     }
 
     @Operation(summary = "Atualiza um interesse por ID",
-            description = "Atualiza o status do interesse. Somente o Locador da casa pode atualizar o interesse.")
+            description = "Atualiza o status do interesse. Somente o Locatário proprietário do interesse pode atualizar (inativar) o interesse.")
     @ApiResponse(responseCode = "200", description = "Interesse atualizado com sucesso")
-    @ApiResponse(responseCode = "403", description = "Acesso Negado (somente Locador da casa)")
+    @ApiResponse(responseCode = "403", description = "Acesso Negado (somente Locatário proprietário do interesse)")
     @ApiResponse(responseCode = "404", description = "Interesse não encontrado")
     @PatchMapping("/{id}")
     public InteresseResponseDTO update (@PathVariable Long id, @Valid @RequestBody InteresseUpdateDTO updateDTO, Authentication authentication) {

@@ -111,7 +111,7 @@ public class InteresseService {
         return interesses.map(interesse -> modelMapper.map(interesse, InteresseResponseDTO.class));
     }
 
-    @PreAuthorize("hasRole('LOCADOR') and @interesseService.isLocadorOfInteresseCasa(#id)")
+    @PreAuthorize("hasRole('LOCATARIO') and @interesseService.isLocatarioOfInteresse(#id)")
     public InteresseResponseDTO update (Long id, InteresseUpdateDTO updateDTO, String userEmail) {
         Interesse interesse = this.getInteresseEntity(id);
 

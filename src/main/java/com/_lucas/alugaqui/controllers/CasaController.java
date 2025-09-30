@@ -59,7 +59,7 @@ public class CasaController {
             @RequestParam(required = false) Integer minQuartos,
             @Parameter(description = "Filtro pelo status da casa (DISPONIVEL, ALUGADA, INATIVA).")
             @RequestParam(required = false) Status status,
-            @PageableDefault(sort = "nome", size = 10, page = 1) Pageable pageable,
+            @PageableDefault(sort = "nome", size = 100, page = 1) Pageable pageable,
             Authentication authentication
     ) {
         String userEmail = authentication.getName();

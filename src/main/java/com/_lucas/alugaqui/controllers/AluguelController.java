@@ -56,7 +56,7 @@ public class AluguelController {
     public Page<AluguelResponseDTO> getAll (
             @Parameter(description = "Filtro pelo status do aluguel (ATIVO, FINALIZADO, CANCELADO).")
             @RequestParam(required = false) StatusAluguel status,
-            @PageableDefault(sort = "dataInicio", size = 10) Pageable pageable,
+            @PageableDefault(sort = "dataInicio", size = 100) Pageable pageable,
             Authentication authentication
     ) {
         String userEmail = authentication.getName();
