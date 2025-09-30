@@ -4,6 +4,7 @@ import com._lucas.alugaqui.DTOs.ApiErrorDTO;
 import com._lucas.alugaqui.exceptions.ForbiddenOperationException;
 import com._lucas.alugaqui.exceptions.ResourceNotFoundException;
 import com._lucas.alugaqui.exceptions.EmailNotFoundException;
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
+@Hidden
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)

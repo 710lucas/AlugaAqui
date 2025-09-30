@@ -3,6 +3,7 @@ package com._lucas.alugaqui.security;
 import com._lucas.alugaqui.exceptions.EmailNotFoundException;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@Hidden
 public class CustomUserDetailService implements UserDetailsService {
 
     private final UsuarioRepository usuarioRepository;

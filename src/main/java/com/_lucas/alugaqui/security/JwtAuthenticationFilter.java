@@ -1,6 +1,7 @@
 package com._lucas.alugaqui.security;
 
 import com._lucas.alugaqui.repositories.UsuarioRepository;
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 
 
 @Component
+@Hidden
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final UsuarioRepository usuarioRepository;
