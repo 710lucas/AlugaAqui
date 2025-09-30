@@ -4,6 +4,8 @@ import com._lucas.alugaqui.DTOs.ChangePasswordDTO;
 import com._lucas.alugaqui.DTOs.LoginRequestDTO;
 import com._lucas.alugaqui.DTOs.TokenResponseDTO;
 import com._lucas.alugaqui.security.JwtUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +19,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Autenticação", description = "Endpoints para Login e Gerenciamento de Autenticação")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -33,6 +36,8 @@ public class AuthController {
         this.userDetailsService = userDetailsService;
     }
 
+    @Operation(summary = "Realiza o login de um usuário e retorna um token JWT",
+            description = "Autentica o usuário com email e senha e, em caso de sucesso, fornece um token Bearer para acesso às rotas protegidas.")
     @PostMapping("/login")
     public TokenResponseDTO createAuthenticationToken(@RequestBody LoginRequestDTO loginRequestDTO) throws Exception {
         authenticationManager.authenticate(
@@ -45,11 +50,10 @@ public class AuthController {
 
     }
 
-
+    @Operation(summary = "Endpoint de alteração de senha (Não implementado).",
+            description = "Endpoint placeholder para futura implementação de alteração de senha.")
     @PostMapping("/change-password")
     public String changePassword(@RequestBody ChangePasswordDTO changePasswordDTO){
         return "ok";
     }
-
-
 }

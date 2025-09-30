@@ -19,7 +19,6 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.naming.AuthenticationException;
 import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -119,8 +118,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiErrorDTO> handleGlobalException(Exception ex, HttpServletRequest request) {
 
-        log.error(String.valueOf(ex.getCause()));
-        System.err.println(ex.getMessage());
+        log.error("Erro inesperado: {}", ex.getMessage(), ex);
 
         ApiErrorDTO error = new ApiErrorDTO(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),

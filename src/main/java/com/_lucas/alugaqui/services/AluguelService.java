@@ -9,7 +9,6 @@ import com._lucas.alugaqui.models.Aluguel.Aluguel;
 import com._lucas.alugaqui.models.Aluguel.StatusAluguel;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Casa.Status;
-import com._lucas.alugaqui.models.Usuario.Role;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.AluguelRepository;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
@@ -21,9 +20,7 @@ import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class AluguelService {
@@ -65,7 +62,7 @@ public class AluguelService {
 
     @PreAuthorize("hasRole('LOCADOR') and @casaService.isLocadorOfCasa(#createDTO.casaId)")
     public AluguelResponseDTO create(AluguelCreateDTO createDTO, String userEmail){
-        Usuario locador = this.usuarioRepository.findUsuarioByEmail(userEmail); // Locador é o usuário autenticado
+        Usuario locador = this.usuarioRepository.findUsuarioByEmail(userEmail);
 
         if (locador == null) {
             throw new ResourceNotFoundException("Usuário", userEmail);
@@ -120,7 +117,6 @@ public class AluguelService {
         return alugueis.map(aluguel -> modelMapper.map(aluguel, AluguelResponseDTO.class));
     }
 
-    // PATCH: Somente Locador pode editar o SEU aluguel
     @PreAuthorize("hasRole('LOCADOR') and @aluguelService.isLocador(#id)")
     public AluguelResponseDTO update(Long id, AluguelUpdateDTO updateDTO, String userEmail){
         Aluguel aluguel = this.getAluguelEntity(id);

@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-// Importações adicionais para tratamento de exceções do JWT
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -56,7 +55,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             try {
                 email = jwtUtil.extractEmail(jwt);
             } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException | IllegalArgumentException e) {
-                System.err.println("Erro ao processar JWT: " + e.getMessage());
+                // Erro ao processar JWT, mas o filter chain continua.
             }
         }
 
@@ -73,12 +72,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                 }
             } catch (Exception e) {
-                System.err.println("Falha na autenticação do usuário ou validação do token: " + e.getMessage());
+                // Falha na autenticação ou validação do token, o filter chain continua sem autenticar.
             }
-
         }
 
         chain.doFilter(request, response);
-
     }
 }

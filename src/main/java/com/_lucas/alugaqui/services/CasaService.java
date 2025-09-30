@@ -3,7 +3,6 @@ package com._lucas.alugaqui.services;
 import com._lucas.alugaqui.DTOs.CasaCreateDTO;
 import com._lucas.alugaqui.DTOs.CasaUpdateDTO;
 import com._lucas.alugaqui.DTOs.CasaResponseDTO;
-import com._lucas.alugaqui.exceptions.ForbiddenOperationException;
 import com._lucas.alugaqui.exceptions.ResourceNotFoundException;
 import com._lucas.alugaqui.models.Casa.Casa;
 import com._lucas.alugaqui.models.Casa.Status;

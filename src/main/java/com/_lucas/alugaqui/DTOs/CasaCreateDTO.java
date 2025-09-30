@@ -1,33 +1,40 @@
 package com._lucas.alugaqui.DTOs;
 
-import com._lucas.alugaqui.models.Casa.Status;
-import com._lucas.alugaqui.models.Usuario.Usuario;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 import java.util.List;
 
+@Schema(description = "DTO para criação de uma nova casa/imóvel por um Locador.")
 public class CasaCreateDTO {
 
     @NotBlank
+    @Schema(description = "Nome para identificar a casa.")
     private String nome;
 
     @NotBlank
+    @Schema(description = "Descrição detalhada da casa.")
     private String descricao;
 
     @NotBlank
+    @Schema(description = "Endereço completo da casa.")
     private String endereco;
 
     @NotBlank
+    @Schema(description = "Tipo de imóvel (Ex: Apartamento, Casa, Studio).")
     private String tipo;
 
     @Positive
+    @Schema(description = "Número de quartos na casa.")
     private int quartos;
 
+    @Schema(description = "Indica se a casa é mobiliada.")
     private boolean mobiliada;
 
     @NotNull
+    @Schema(description = "Lista de restrições ou regras da casa.")
     private List<String> restricoes;
 
     public CasaCreateDTO(String nome, String descricao, String endereco, String tipo, int quartos, boolean mobiliada, List<String> restricoes) {
@@ -42,8 +49,6 @@ public class CasaCreateDTO {
 
     public CasaCreateDTO() {
     }
-
-    // Getters e Setters, sem os de locadorId
 
     public String getNome() {
         return nome;

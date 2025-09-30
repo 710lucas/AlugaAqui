@@ -1,16 +1,18 @@
 package com._lucas.alugaqui.DTOs;
 
 import com._lucas.alugaqui.models.Interesse.StatusInteresse;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 
+@Schema(description = "DTO para criação de um novo interesse em uma casa.")
 public class InteresseCreateDTO {
 
     @NotNull
+    @Schema(description = "ID da casa na qual o locatário tem interesse.")
     private Long casaId;
 
-    // Removido o locatarioId, ele virá do JWT
-
     @NotNull
+    @Schema(description = "Status inicial do interesse (geralmente ATIVO).")
     private StatusInteresse status;
 
     public InteresseCreateDTO(Long casaId, StatusInteresse status) {

@@ -1,25 +1,33 @@
 package com._lucas.alugaqui.DTOs;
 
 import com._lucas.alugaqui.models.Usuario.Role;
-import jakarta.validation.constraints.Max;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
+@Schema(description = "DTO para criação de um novo usuário no sistema.")
 public class UsuarioCreateDTO {
 
     @NotBlank
+    @Schema(description = "Nome completo do usuário.")
     private String nome;
 
     @NotBlank
+    @Schema(description = "Email do usuário (usado como nome de usuário para login).")
     private String email;
 
     @NotBlank
+    @Size(max = 13)
+    @Schema(description = "Telefone do usuário. Máximo de 13 caracteres (ex: 5500912345678).")
     private String telefone;
 
     @NotNull
+    @Schema(description = "Papel do usuário (LOCATARIO ou LOCADOR).")
     private Role role;
 
     @NotBlank
+    @Schema(description = "Senha para o login.")
     private String senha;
 
     public UsuarioCreateDTO(String nome, String email, String telefone, Role role, String senha) {

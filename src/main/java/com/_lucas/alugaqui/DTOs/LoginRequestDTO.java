@@ -1,8 +1,14 @@
 package com._lucas.alugaqui.DTOs;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "DTO para requisição de login (autenticação).")
 public class LoginRequestDTO {
 
+    @Schema(description = "Email do usuário (username).")
     private String username;
+
+    @Schema(description = "Senha do usuário.")
     private String password;
 
     public LoginRequestDTO(String username, String password) {

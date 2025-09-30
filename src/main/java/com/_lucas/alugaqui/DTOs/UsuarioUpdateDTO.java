@@ -1,14 +1,19 @@
 package com._lucas.alugaqui.DTOs;
 
-import jakarta.validation.constraints.Max;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Size;
 
+@Schema(description = "DTO para atualização de informações do usuário.")
 public class UsuarioUpdateDTO {
 
+    @Schema(description = "Novo nome do usuário.")
     private String nome;
 
+    @Schema(description = "Novo email do usuário.")
     private String email;
 
-    @Max(13)
+    @Size(max = 13)
+    @Schema(description = "Novo telefone do usuário. Máximo de 13 caracteres (ex: 5500912345678).")
     private String telefone;
 
     private String senha;
