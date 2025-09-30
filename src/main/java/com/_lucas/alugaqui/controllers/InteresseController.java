@@ -9,6 +9,8 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,8 +54,9 @@ public class InteresseController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete (@PathVariable Long id, Authentication authentication) {
+    public ResponseEntity<Void> delete (@PathVariable Long id, Authentication authentication) {
         String userEmail = authentication.getName();
         this.interesseService.delete(id, userEmail);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

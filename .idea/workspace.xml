@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Melhoria na logica do projeto">
-      <change afterPath="$PROJECT_DIR$/full_test.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup_data.sh" afterDir="false" />
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Ajustes de logica">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/AlugaAquiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/AlugaAquiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/DTOs/UsuarioResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/exceptions/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/exceptions/handler/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Aluguel/Aluguel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Aluguel/Aluguel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Casa/Casa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Casa/Casa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/models/Usuario/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/_lucas/alugaqui/AlugaAquiApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AluguelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AluguelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/CasaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/CasaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/InteresseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/InteresseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +151,7 @@
       <workItem from="1759189798256" duration="1591000" />
       <workItem from="1759233402854" duration="2338000" />
       <workItem from="1759242629966" duration="3774000" />
-      <workItem from="1759252576842" duration="2523000" />
+      <workItem from="1759252576842" duration="3053000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -373,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759253786364</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Ajustes de logica">
+      <option name="closed" value="true" />
+      <created>1759255197616</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1759255197616</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,7 +407,8 @@
     <MESSAGE value="Ajustando swagger" />
     <MESSAGE value="Tratando exceções de segurança" />
     <MESSAGE value="Melhoria na logica do projeto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Melhoria na logica do projeto" />
+    <MESSAGE value="Ajustes de logica" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes de logica" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

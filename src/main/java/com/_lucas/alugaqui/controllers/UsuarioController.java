@@ -6,6 +6,8 @@ import com._lucas.alugaqui.DTOs.UsuarioUpdateDTO;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.services.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -41,8 +43,9 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete (@PathVariable Long id) {
+    public ResponseEntity<Void> delete (@PathVariable Long id) {
         this.usuarioService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
