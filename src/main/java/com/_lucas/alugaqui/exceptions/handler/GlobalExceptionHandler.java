@@ -120,7 +120,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiErrorDTO> handleGlobalException(Exception ex, HttpServletRequest request) {
 
         log.error(String.valueOf(ex.getCause()));
-        System.err.println(Arrays.toString(ex.getStackTrace()));
         System.err.println(ex.getMessage());
 
         ApiErrorDTO error = new ApiErrorDTO(

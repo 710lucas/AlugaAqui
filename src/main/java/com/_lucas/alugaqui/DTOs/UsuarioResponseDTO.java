@@ -35,11 +35,8 @@ public class UsuarioResponseDTO {
     public void setCasasIds(List<Long> casasIds) { this.casasIds = casasIds; }
     public List<Long> getLocadorAlugueisIds() { return locadorAlugueisIds; }
     public void setLocadorAlugueisIds(List<Long> locadorAlugueisIds) { this.locadorAlugueisIds = locadorAlugueisIds; }
-
-    // CORRIGIDO: Getter e Setter para a nova lista
     public List<Long> getLocatarioAlugueisIds() { return locatarioAlugueisIds; }
     public void setLocatarioAlugueisIds(List<Long> locatarioAlugueisIds) { this.locatarioAlugueisIds = locatarioAlugueisIds; }
-
     public List<Long> getInteressesIds() { return interessesIds; }
     public void setInteressesIds(List<Long> interessesIds) { this.interessesIds = interessesIds; }
 }

@@ -43,7 +43,7 @@ public class Usuario {
     private List<Aluguel> locadorAlugueis;
 
     @OneToMany(mappedBy = "locatario")
-    private List<Aluguel> locatarioAlugueis;
+    private List<Aluguel> locatarioAlugueis = new ArrayList<>();
 
     @OneToMany(mappedBy = "locatario")
     private List<Interesse> interesses;
@@ -55,7 +55,6 @@ public class Usuario {
         this.role = role;
         this.casas = new ArrayList<>();
         this.locadorAlugueis = new ArrayList<>();
-        this.locatarioAlugueis = new ArrayList<>();
         this.interesses = new ArrayList<>();
         this.senha = senha;
     }
@@ -63,7 +62,6 @@ public class Usuario {
     public Usuario() {
         this.casas = new ArrayList<>();
         this.locadorAlugueis = new ArrayList<>();
-        this.locatarioAlugueis = new ArrayList<>();
         this.interesses = new ArrayList<>();
     }
 

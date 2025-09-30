@@ -5,7 +5,6 @@ import com._lucas.alugaqui.models.Interesse.Interesse;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 

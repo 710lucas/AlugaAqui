@@ -10,7 +10,7 @@ import com._lucas.alugaqui.models.Interesse.Interesse;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
-import org.modelmapper.convention.MatchingStrategies; // Adicionado
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -29,15 +29,12 @@ public class AlugaAquiApplication {
 	public ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 
-		// Configurações gerais para ModelMapper
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		modelMapper.getConfiguration().setAmbiguityIgnored(true);
 
-		// 1. Usuario -> UsuarioResponseDTO
 		modelMapper.addMappings(new PropertyMap<Usuario, UsuarioResponseDTO>() {
 			@Override
 			protected void configure() {
-				// Mapeamento de coleções para List<Long> usando with().map() para evitar ConfigurationException.
 				using(context -> ((List<Casa>) context.getSource()).stream().map(Casa::getId).collect(Collectors.toList()))
 						.map(source.getCasas(), destination.getCasasIds());
 
@@ -47,12 +44,11 @@ public class AlugaAquiApplication {
 				using(context -> ((List<Interesse>) context.getSource()).stream().map(Interesse::getId).collect(Collectors.toList()))
 						.map(source.getInteresses(), destination.getInteressesIds());
 
-				// Mapeamento de entidade 1:1 (Aluguel) para Long (ID)
-				map(source.getLocatarioAluguel() != null ? source.getLocatarioAluguel().getId() : null, destination.getLocatarioAluguelId());
+				using(context -> ((List<Aluguel>) context.getSource()).stream().map(Aluguel::getId).collect(Collectors.toList()))
+						.map(source.getLocatarioAlugueis(), destination.getLocatarioAlugueisIds());
 			}
 		});
 
-		// 2. Casa -> CasaResponseDTO
 		modelMapper.addMappings(new PropertyMap<Casa, CasaResponseDTO>() {
 			@Override
 			protected void configure() {
@@ -65,15 +61,17 @@ public class AlugaAquiApplication {
 			}
 		});
 
-		// 3. Aluguel -> AluguelResponseDTO (Mapeia a entidade Casa para CasaId)
 		modelMapper.addMappings(new PropertyMap<Aluguel, AluguelResponseDTO>() {
 			@Override
 			protected void configure() {
 				map(source.getCasa().getId(), destination.getCasaId());
+
+				map(source.getLocador().getId(), destination.getLocador().getId());
+
+				map(source.getLocatario().getId(), destination.getLocatario().getId());
 			}
 		});
 
-		// 4. Interesse -> InteresseResponseDTO (Mapeia a entidade Casa para CasaId)
 		modelMapper.addMappings(new PropertyMap<Interesse, InteresseResponseDTO>() {
 			@Override
 			protected void configure() {

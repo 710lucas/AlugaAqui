@@ -21,7 +21,7 @@ public class Aluguel {
     @ManyToOne()
     private Usuario locador;
 
-    @ManyToOne() // CORRIGIDO: De OneToOne para ManyToOne
+    @ManyToOne()
     private Usuario locatario;
 
     private LocalDate dataInicio;
