@@ -1,0 +1,22 @@
+services:
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: alugaqui_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: alugaqui
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - alugaqui-network
+      
+volumes:
+  postgres_data:
+
+networks:
+  alugaqui-network:
+    driver: bridge

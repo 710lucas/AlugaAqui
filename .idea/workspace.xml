@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Ajustes de logica">
+    <list default="true" id="73ee0970-cbd2-45c2-a992-da36c8a441ba" name="Changes" comment="Adicionando script de teste de rotas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AluguelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/AluguelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/CasaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/CasaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/InteresseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/InteresseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/_lucas/alugaqui/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +146,7 @@
       <workItem from="1759189798256" duration="1591000" />
       <workItem from="1759233402854" duration="2338000" />
       <workItem from="1759242629966" duration="3774000" />
-      <workItem from="1759252576842" duration="3053000" />
+      <workItem from="1759252576842" duration="4945000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -377,14 +372,29 @@
       <option name="project" value="LOCAL" />
       <updated>1759255197616</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Ajustando retorno de metodos delete">
+      <option name="closed" value="true" />
+      <created>1759255645296</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1759255645296</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Adicionando script de teste de rotas">
+      <option name="closed" value="true" />
+      <created>1759255670660</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1759255670660</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
     <MESSAGE value="Primeiras entidades" />
     <MESSAGE value="Repositories" />
     <MESSAGE value="adicionando .gitignore" />
@@ -408,7 +418,9 @@
     <MESSAGE value="Tratando exceções de segurança" />
     <MESSAGE value="Melhoria na logica do projeto" />
     <MESSAGE value="Ajustes de logica" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes de logica" />
+    <MESSAGE value="Ajustando retorno de metodos delete" />
+    <MESSAGE value="Adicionando script de teste de rotas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando script de teste de rotas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
