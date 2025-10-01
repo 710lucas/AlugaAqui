@@ -1,6 +1,5 @@
 package com._lucas.alugaqui.controllers;
 
-import com._lucas.alugaqui.DTOs.ChangePasswordDTO;
 import com._lucas.alugaqui.DTOs.LoginRequestDTO;
 import com._lucas.alugaqui.DTOs.TokenResponseDTO;
 import com._lucas.alugaqui.security.JwtUtil;
@@ -48,12 +47,5 @@ public class AuthController {
         String token = jwtUtil.generateToken(new HashMap<>(), userDetails.getUsername());
         return new TokenResponseDTO(token);
 
-    }
-
-    @Operation(summary = "Endpoint de alteração de senha (Não implementado).",
-            description = "Endpoint placeholder para futura implementação de alteração de senha.")
-    @PostMapping("/change-password")
-    public String changePassword(@RequestBody ChangePasswordDTO changePasswordDTO){
-        return "ok";
     }
 }
