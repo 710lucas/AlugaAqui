@@ -4,8 +4,11 @@ import com._lucas.alugaqui.DTOs.UsuarioCreateDTO;
 import com._lucas.alugaqui.DTOs.UsuarioResponseDTO;
 import com._lucas.alugaqui.DTOs.UsuarioUpdateDTO;
 import com._lucas.alugaqui.exceptions.ResourceNotFoundException;
+import com._lucas.alugaqui.models.Usuario.Role;
 import com._lucas.alugaqui.models.Usuario.Usuario;
 import com._lucas.alugaqui.repositories.UsuarioRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
@@ -52,12 +55,10 @@ public class UsuarioService {
         return modelMapper.map(usuario, UsuarioResponseDTO.class);
     }
 
-    public Collection<UsuarioResponseDTO> getAll(){
-        Collection<Usuario> usuarios = this.usuarioRepository.findAll();
+    public Page<UsuarioResponseDTO> getAll(String nome, String email, Role role, Pageable pageable){
+        Page<Usuario> usuarios = this.usuarioRepository.findAllByOptionalFilters(nome, email, role, pageable);
 
-        return usuarios.stream()
-                .map(usuario -> modelMapper.map(usuario, UsuarioResponseDTO.class))
-                .collect(Collectors.toList());
+        return usuarios.map(usuario -> modelMapper.map(usuario, UsuarioResponseDTO.class));
     }
 
     public UsuarioResponseDTO update(Long id, UsuarioUpdateDTO updateDTO){

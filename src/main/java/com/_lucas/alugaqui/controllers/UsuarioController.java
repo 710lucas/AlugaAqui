@@ -3,11 +3,16 @@ package com._lucas.alugaqui.controllers;
 import com._lucas.alugaqui.DTOs.UsuarioCreateDTO;
 import com._lucas.alugaqui.DTOs.UsuarioResponseDTO;
 import com._lucas.alugaqui.DTOs.UsuarioUpdateDTO;
+import com._lucas.alugaqui.models.Usuario.Role;
 import com._lucas.alugaqui.services.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,12 +48,26 @@ public class UsuarioController {
         return this.usuarioService.get(id);
     }
 
-    @Operation(summary = "Lista todos os usuários",
-            description = "Retorna uma lista de todos os usuários cadastrados.")
+    @Operation(summary = "Lista todos os usuários com filtros e paginação",
+            description = "Retorna uma lista paginada de todos os usuários cadastrados.")
     @ApiResponse(responseCode = "200", description = "Lista de usuários retornada")
     @GetMapping()
-    public Collection<UsuarioResponseDTO> getAll (){
-        return this.usuarioService.getAll();
+    public Page<UsuarioResponseDTO> getAll (
+            @Parameter(description = "Filtro parcial por nome do usuário.")
+            @RequestParam(required = false) String nome,
+            @Parameter(description = "Filtro parcial por email do usuário.")
+            @RequestParam(required = false) String email,
+            @Parameter(description = "Filtro por papel do usuário (LOCATARIO ou LOCADOR).")
+            @RequestParam(required = false) Role role,
+            @Parameter(description = "Número da página (inicia em 0). Default: 0.", example = "0")
+            @RequestParam(defaultValue = "0") int page,
+            @Parameter(description = "Tamanho da página. Default: 100.", example = "100")
+            @RequestParam(defaultValue = "100") int size,
+            @Parameter(description = "Propriedade para ordenação, seguido de ',' e direção (ASC ou DESC). Default: nome,ASC.", example = "nome,ASC")
+            @RequestParam(defaultValue = "nome") String sort,
+            @PageableDefault(sort = "nome", size = 100) @Parameter(hidden = true) Pageable pageable
+    ){
+        return this.usuarioService.getAll(nome, email, role, pageable);
     }
 
     @Operation(summary = "Atualiza um usuário por ID",
